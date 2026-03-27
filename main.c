@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #define HELP "Show all commands."
 #define SET_NEW_NAME "Set a new user name."
 #define CLEAR "Clear console."
