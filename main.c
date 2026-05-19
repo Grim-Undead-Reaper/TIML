@@ -7,7 +7,7 @@
 #define CLEAR "Clear console."
 #define GET_CURRENT_USERNAME "Get Current User."
 #define EXIT "Closes the terminal."
-#define VERSION "Version 0.0.6"
+#define VERSION "Version 0.0.7"
 
 int help();
 int ClearConsole();
@@ -18,17 +18,17 @@ void CurrentVersion();
 
 int main()
 {
+    system("cls");
     int Exit = 0;
     while(Exit == 0){
         char CurrentInput[255];
         char CurrentUsername[255];
         printf("\n");
-        printf("Choice one command: ");
         scanf("%s", CurrentInput);
 
         if (strcmp(CurrentInput, "help") == 0){
             help();
-        } else if (strcmp(CurrentInput, "set_new_name") == 0 || strcmp(CurrentInput, "snn") == 0){
+        } else if (strcmp(CurrentInput, "set_new_name") == 0 || strcmp(CurrentInput, "setuser") == 0){
             SetNewName(CurrentUsername);
         } else if (strcmp(CurrentInput, "get_current_username") == 0 || strcmp(CurrentInput, "getuser") == 0){
             GetUsername(CurrentUsername);
@@ -38,7 +38,7 @@ int main()
             CurrentVersion();
         } else if (strcmp(CurrentInput, "exit") == 0){
             Exit = 1;
-            system("pause");
+            system("cls");
         } else{
             system("cls");
             printf("\nERROR: Command not found!!!");
@@ -50,7 +50,7 @@ int main()
 int help(){
     printf("\n");
     printf("help: %s\n", HELP);
-    printf("set_new_name/snn: %s\n", SET_NEW_NAME);
+    printf("set_new_name/setuser: %s\n", SET_NEW_NAME);
     printf("get_current_username/getuser: %s\n", GET_CURRENT_USERNAME);
     printf("clear/cls: %s\n", CLEAR);
     printf("--version: %s\n", VERSION);
@@ -64,19 +64,24 @@ void SetNewName(char *Array){
     printf("\n");
     printf("New username: ");
     scanf("%s", Array);
+    printf("\nName added Succeessify!\n");
 }
 
 void GetUsername(char *Array){
 
-    if (strcmp(Array, "\n") == 0 || strcmp(Array, "\0") == 0){
+    if (strcmp(Array, "?") == 0){
         Array = "Default";
     }
 
-    printf("Active user: [%s]\n", Array);
+    printf("\nActive user: [%s]\n", Array);
 }
 
 int ClearConsole(){
     system("cls");
+}
+
+void CurrentVersion(){
+    printf("\n[Author]: {Grim-Undead-Reaper}\n[StringName]: {First_C_UI}\n[Version]: {%s}\n", VERSION);
 }
 
 int ClearArray(char *Array){
@@ -84,8 +89,4 @@ int ClearArray(char *Array){
         Array[i] = '\0';
     }
     return 0;
-}
-
-void CurrentVersion(){
-    printf("\n[Author]: {Grim-Undead-Reaper}\n[StringName]: {First_C_UI}\n[Version]: {%s}\n", VERSION);
 }
