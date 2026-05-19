@@ -6,6 +6,7 @@
 #define SET_NEW_NAME "Set a new user name."
 #define CLEAR "Clear console."
 #define GET_CURRENT_USERNAME "Get Current User."
+#define COMMAND_HISTORY "Get all commands used."
 #define EXIT "Closes the terminal."
 #define VERSION "Version 0.0.7"
 
@@ -15,16 +16,22 @@ void SetNewName(char *Array);
 void GetUsername(char *Array);
 int ClearArray(char *Array);
 void CurrentVersion();
+void AddNewCommandToHistory(int* count, char commandList[100][255], char* currentCommand);
+void GetHistory(char commandList[100][255]);
 
 int main()
 {
     system("cls");
     int Exit = 0;
+    int count = 0;
+
     while(Exit == 0){
         char CurrentInput[255];
         char CurrentUsername[255];
+        char commandList[100][255];
         printf("\n");
         scanf("%s", CurrentInput);
+        AddNewCommandToHistory(&count, commandList, CurrentInput);
 
         if (strcmp(CurrentInput, "help") == 0){
             help();
@@ -39,9 +46,11 @@ int main()
         } else if (strcmp(CurrentInput, "exit") == 0){
             Exit = 1;
             system("cls");
-        } else{
-            system("cls");
-            printf("\nERROR: Command not found!!!");
+        } else if (strcmp(CurrentInput, "cmdh") == 0){
+            GetHistory(commandList);
+        } else {
+          system("cls");
+          printf("\nERROR: Command not found!!!");
         }
     }
     return 0;
@@ -89,4 +98,17 @@ int ClearArray(char *Array){
         Array[i] = '\0';
     }
     return 0;
+}
+
+void AddNewCommandToHistory(int* count, char commandList[100][255], char* currentCommand){
+    strcpy(commandList[*count], currentCommand);
+    *count = *count + 1;
+}
+
+void GetHistory(char commandList[100][255]){
+    int length = sizeof(commandList)/sizeof(commandList[0][0]);
+    printf("ID | Command name\n");
+    for (int i = 0; i < length; i++){
+        printf("%d | %s\n", i, commandList[i]);
+    }
 }
