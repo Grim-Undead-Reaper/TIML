@@ -8,7 +8,7 @@
 #define GET_CURRENT_USERNAME "Get Current User."
 #define COMMAND_HISTORY "Get all commands used."
 #define EXIT "Closes the terminal."
-#define VERSION "Version 0.0.7"
+#define VERSION "Version 0.0.8"
 
 int help();
 int ClearConsole();
@@ -17,7 +17,7 @@ void GetUsername(char *Array);
 int ClearArray(char *Array);
 void CurrentVersion();
 void AddNewCommandToHistory(int* count, char commandList[100][255], char* currentCommand);
-void GetHistory(char commandList[100][255]);
+void GetHistory(int size, char commandList[100][255]);
 
 int main()
 {
@@ -47,7 +47,7 @@ int main()
             Exit = 1;
             system("cls");
         } else if (strcmp(CurrentInput, "cmdh") == 0){
-            GetHistory(commandList);
+            GetHistory(count, commandList);
         } else {
           system("cls");
           printf("\nERROR: Command not found!!!");
@@ -105,10 +105,9 @@ void AddNewCommandToHistory(int* count, char commandList[100][255], char* curren
     *count = *count + 1;
 }
 
-void GetHistory(char commandList[100][255]){
-    int length = sizeof(commandList)/sizeof(commandList[0][0]);
+void GetHistory(int size, char commandList[100][255]){
     printf("ID | Command name\n");
-    for (int i = 0; i < length; i++){
+    for (int i = 0; i < size; i++){
         printf("%d | %s\n", i, commandList[i]);
     }
 }
