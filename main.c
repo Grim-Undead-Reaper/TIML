@@ -2,13 +2,21 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define HELP "Show all commands."
-#define SET_NEW_NAME "Set a new user name."
-#define CLEAR "Clear console."
-#define GET_CURRENT_USERNAME "Get Current User."
-#define COMMAND_HISTORY "Get all commands used."
-#define EXIT "Closes the terminal."
-#define VERSION "Version 0.0.8"
+typedef struct main
+{
+    char *name;
+    char *description;
+} Command;
+
+Command commands[] = {
+    {"help", "Show all commands."},
+    {"setuser", "Set a new user name."},
+    {"getuser", "Get Current User."},
+    {"clear/cls", "Clear console."},
+    {"cmdh", "Get all commands used."},
+    {"--version", "Get current terminal version"},
+    {"exit", "Close the terminal."}
+};
 
 int help();
 int ClearConsole();
@@ -18,6 +26,8 @@ int ClearArray(char *Array);
 void CurrentVersion();
 void AddNewCommandToHistory(int* count, char commandList[100][255], char* currentCommand);
 void GetHistory(int size, char commandList[100][255]);
+
+char version[] = "0.0.9";
 
 int main()
 {
@@ -35,9 +45,9 @@ int main()
 
         if (strcmp(CurrentInput, "help") == 0){
             help();
-        } else if (strcmp(CurrentInput, "set_new_name") == 0 || strcmp(CurrentInput, "setuser") == 0){
+        } else if (strcmp(CurrentInput, "setuser") == 0){
             SetNewName(CurrentUsername);
-        } else if (strcmp(CurrentInput, "get_current_username") == 0 || strcmp(CurrentInput, "getuser") == 0){
+        } else if (strcmp(CurrentInput, "getuser") == 0){
             GetUsername(CurrentUsername);
         } else if (strcmp(CurrentInput, "clear") == 0 || strcmp(CurrentInput, "cls") == 0){
             ClearConsole();
@@ -57,17 +67,12 @@ int main()
 }
 
 int help(){
-    printf("\n");
-    printf("help: %s\n", HELP);
-    printf("set_new_name/setuser: %s\n", SET_NEW_NAME);
-    printf("get_current_username/getuser: %s\n", GET_CURRENT_USERNAME);
-    printf("clear/cls: %s\n", CLEAR);
-    printf("--version: %s\n", VERSION);
-
-    printf("exit: %s\n", EXIT);
-    printf("\n");
+    int size = sizeof(commands) / sizeof(commands[0]);
+    for (int i = 0; i < size; i++){
+        printf("%s: %s\n", commands[i].name, commands[i].description);
+    }
     return 0;
-}   
+}
 
 void SetNewName(char *Array){
     printf("\n");
@@ -90,7 +95,7 @@ int ClearConsole(){
 }
 
 void CurrentVersion(){
-    printf("\n[Author]: {Grim-Undead-Reaper}\n[StringName]: {First_C_UI}\n[Version]: {%s}\n", VERSION);
+    printf("\n[Author]: {Grim-Undead-Reaper}\n[StringName]: {First_C_UI}\n[Version]: {%s}\n", version);
 }
 
 int ClearArray(char *Array){
