@@ -2,22 +2,36 @@
 #include <stdlib.h>
 #include <string.h>
 
+enum Functions {
+  HELP,
+  SETUSER,
+  GETUSER,
+  CLEARCONSOLE,
+  GETHISTORY,
+  VERSION,
+  EXIT
+};
+
 typedef struct main
 {
     char *name;
     char *description;
+    enum Functions func;
 } Command;
 
 Command commands[] = {
-    {"help", "Show all commands."},
-    {"setuser", "Set a new user name."},
-    {"getuser", "Get Current User."},
-    {"clear/cls", "Clear console."},
-    {"cmdh", "Get all commands used."},
-    {"--version", "Get current terminal version"},
-    {"exit", "Close the terminal."}
+    {"help", "Show all commands.", HELP},
+    {"setuser", "Set a new user name.", SETUSER},
+    {"getuser", "Get Current User.", GETUSER},
+    {"clear", "Clear console.", CLEARCONSOLE},
+    {"cmdh", "Get all commands used.", GETHISTORY},
+    {"--version", "Get current terminal version", VERSION},
+    {"exit", "Close the terminal.", EXIT}
 };
 
+#define CommandsSize (sizeof(commands) / sizeof(commands[0]))
+
+enum Functions InputHandler(char* InputArray, int* count, char commandList[100][255]);
 int help();
 int ClearConsole();
 void SetNewName(char *Array);
@@ -40,35 +54,59 @@ int main()
         char CurrentUsername[255];
         char commandList[100][255];
         printf("\n");
-        scanf("%s", CurrentInput);
-        AddNewCommandToHistory(&count, commandList, CurrentInput);
 
-        if (strcmp(CurrentInput, "help") == 0){
+        switch (InputHandler(CurrentInput, &count, commandList))
+        {
+        case HELP:
             help();
-        } else if (strcmp(CurrentInput, "setuser") == 0){
+            break;
+
+        case SETUSER:
             SetNewName(CurrentUsername);
-        } else if (strcmp(CurrentInput, "getuser") == 0){
+            break;
+        
+        case GETUSER:
             GetUsername(CurrentUsername);
-        } else if (strcmp(CurrentInput, "clear") == 0 || strcmp(CurrentInput, "cls") == 0){
+            break;
+        
+        case CLEARCONSOLE:
             ClearConsole();
-        } else if (strcmp(CurrentInput, "--version") == 0){
+            break;
+
+        case GETHISTORY:
+            GetHistory(count, commandList);
+            break;
+        
+        case VERSION:
             CurrentVersion();
-        } else if (strcmp(CurrentInput, "exit") == 0){
+            break;
+
+        case EXIT:
             Exit = 1;
             system("cls");
-        } else if (strcmp(CurrentInput, "cmdh") == 0){
-            GetHistory(count, commandList);
-        } else {
-          system("cls");
-          printf("\nERROR: Command not found!!!");
+            break;
+
+        default:
+            system("cls");
+            printf("\nERROR: Command not found!!!");
+            break;
         }
     }
     return 0;
 }
 
+enum Functions InputHandler(char* InputArray, int* count, char commandList[100][255]){
+    scanf("%s", InputArray);
+    AddNewCommandToHistory(count, commandList, InputArray);
+    for (int i = 0; i < CommandsSize; i++){
+        if (strcmp(InputArray, commands[i].name) == 0){
+            return commands[i].func;
+        }
+    }
+}
+
 int help(){
-    int size = sizeof(commands) / sizeof(commands[0]);
-    for (int i = 0; i < size; i++){
+    for (int i = 0; i < CommandsSize; i++){
         printf("%s: %s\n", commands[i].name, commands[i].description);
     }
     return 0;
