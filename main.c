@@ -9,11 +9,12 @@ enum Functions {
   CLEARCONSOLE,
   GETHISTORY,
   VERSION,
-  EXIT
+  EXIT,
+  CREATETYPE,
+  MATH
 };
 
-typedef struct main
-{
+typedef struct {
     char *name;
     char *description;
     enum Functions func;
@@ -26,12 +27,15 @@ Command commands[] = {
     {"clear", "Clear console.", CLEARCONSOLE},
     {"cmdh", "Get all commands used.", GETHISTORY},
     {"--version", "Get current terminal version", VERSION},
-    {"exit", "Close the terminal.", EXIT}
+    {"exit", "Close the terminal.", EXIT},
+    {"Createtype", "Create a new file", CREATETYPE},
+    {"math", "For simple math calcs", MATH}
 };
 
 #define CommandsSize (sizeof(commands) / sizeof(commands[0]))
 
 enum Functions InputHandler(char* InputArray, int* count, char commandList[100][255]);
+void Createtype();
 int help();
 int ClearConsole();
 void SetNewName(char *Array);
@@ -40,6 +44,7 @@ int ClearArray(char *Array);
 void CurrentVersion();
 void AddNewCommandToHistory(int* count, char commandList[100][255], char* currentCommand);
 void GetHistory(int size, char commandList[100][255]);
+void Math();
 
 char version[] = "0.0.9";
 
@@ -48,33 +53,39 @@ int main()
     system("cls");
     int Exit = 0;
     int count = 0;
+    char CurrentUsername[255];
+    char commandList[100][255];
+    
+    printf("Welcome!\n\nUse command 'help' to see all commands\n\n");
 
     while(Exit == 0){
         char CurrentInput[255];
-        char CurrentUsername[255];
-        char commandList[100][255];
-        printf("\n");
 
         switch (InputHandler(CurrentInput, &count, commandList))
         {
         case HELP:
             help();
+            printf("\n");
             break;
 
         case SETUSER:
             SetNewName(CurrentUsername);
+            printf("\n");
             break;
         
         case GETUSER:
             GetUsername(CurrentUsername);
+            printf("\n");
             break;
         
         case CLEARCONSOLE:
             ClearConsole();
+            printf("\n");
             break;
 
         case GETHISTORY:
             GetHistory(count, commandList);
+            printf("\n");
             break;
         
         case VERSION:
@@ -84,6 +95,20 @@ int main()
         case EXIT:
             Exit = 1;
             system("cls");
+            break;
+
+        case CREATETYPE:
+            Createtype();
+            break;
+            
+        case MATH:
+            Math();
+            break;
+
+        case -1:
+            system("cls");
+            printf("\nERROR: Command not found!!!");
+            printf("\n\n");
             break;
 
         default:
@@ -96,13 +121,16 @@ int main()
 }
 
 enum Functions InputHandler(char* InputArray, int* count, char commandList[100][255]){
-    scanf("%s", InputArray);
+    scanf("%254s", InputArray);
+    printf("\n");
     AddNewCommandToHistory(count, commandList, InputArray);
     for (int i = 0; i < CommandsSize; i++){
         if (strcmp(InputArray, commands[i].name) == 0){
             return commands[i].func;
         }
     }
+
+    return -1;
 }
 
 int help(){
@@ -115,14 +143,14 @@ int help(){
 void SetNewName(char *Array){
     printf("\n");
     printf("New username: ");
-    scanf("%s", Array);
+    scanf("%254s", Array);
     printf("\nName added Succeessify!\n");
 }
 
 void GetUsername(char *Array){
 
     if (strcmp(Array, "?") == 0){
-        Array = "Default";
+        strcpy(Array, "Default");
     }
 
     printf("\nActive user: [%s]\n", Array);
@@ -133,7 +161,7 @@ int ClearConsole(){
 }
 
 void CurrentVersion(){
-    printf("\n[Author]: {Grim-Undead-Reaper}\n[StringName]: {First_C_UI}\n[Version]: {%s}\n", version);
+    printf("\n[Author]: {Grim-Undead-Reaper}\n[Software]: {First_C_UI}\n[Version]: {%s}\n", version);
 }
 
 int ClearArray(char *Array){
@@ -153,4 +181,19 @@ void GetHistory(int size, char commandList[100][255]){
     for (int i = 0; i < size; i++){
         printf("%d | %s\n", i, commandList[i]);
     }
+}
+
+void Createtype(){
+    char type[255];
+    char filename[255];
+    
+    printf("FileType FileName\n");
+    scanf("%254s %254s", type, filename);
+    
+    if (strcmp(type, "file") == 0){
+        printf("File '%s' created\n", filename);
+    }else if (strcmp(type, "folder;") == 0){
+        printf("Folder '%s' created\n");
+    }
+    printf("\n");
 }
