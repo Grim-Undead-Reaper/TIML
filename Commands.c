@@ -5,7 +5,7 @@
 #include "History.h"
 #include "User.h"
 
-static const char version[] = "v0.0.9";
+static const char version[] = "v0.0.10";
 
 Command commands[] = {
     {"help", "Show all commands.", HELP},
