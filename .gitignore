@@ -2,4 +2,5 @@
 *.txt
 Terminal.exe
 Terminal_Icon.ico
-make.bat
+*.bat
+*.i
