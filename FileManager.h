@@ -4,6 +4,8 @@ void CreateFile(char* filemame){}
 void ReadFile(char* filepath){}
 void UpdateFile(char* filepath){}
 void DeleteFile(char* filepath){}
+enum types FileInputHandler(){}
+void ReadUserInput(){}
 
 enum types {
     CREATE,
@@ -18,3 +20,4 @@ typedef struct {
 } CommandTypes;
 
 extern CommandTypes cmdType[];
+extern const int COMMANDSIZE;
