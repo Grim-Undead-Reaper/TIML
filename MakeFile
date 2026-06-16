@@ -1,2 +1,9 @@
 Terminal: App.c App.h Commands.c Commands.h History.c History.h User.c User.h main.c
 	gcc App.c Commands.c History.c User.c main.c -Wall -Wextra -pedantic -o Terminal
+
+define ExpandMacros
+	gcc -E $(1)
+endef
+
+ExpandMacro:
+	$(call ExpandMacros, $(filename))
