@@ -13,6 +13,7 @@ Command commands[] = {
     {"getuser", "Get Current User.", GETUSER},
     {"clear", "Clear console.", CLEARCONSOLE},
     {"cmdh", "Get all commands used.", GETHISTORY},
+    {"fmanager", "File the files", FILEMANAGER},
     {"--version", "Get current terminal version", VERSION},
     {"exit", "Close the terminal.", EXIT},
 };

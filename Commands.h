@@ -8,6 +8,7 @@ enum Functions {
   CLEARCONSOLE,
   GETHISTORY,
   VERSION,
+  FILEMANAGER,
   EXIT
 };
 
