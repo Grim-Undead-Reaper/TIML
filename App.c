@@ -3,6 +3,7 @@
 #include "Commands.h"
 #include "User.h"
 #include "History.h"
+#include "FileManager.h"
 
 void CreateTerminal(void){
     system("cls");
@@ -45,6 +46,10 @@ void CreateTerminal(void){
         
         case VERSION:
             CurrentVersion();
+            break;
+
+        case FILEMANAGER:
+            FileHandler();
             break;
 
         case EXIT:
