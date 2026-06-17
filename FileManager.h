@@ -1,11 +1,10 @@
-void FileHandler(char* CommmandFileType){}
+void FileHandler(){}
 
-void CreateFile(char* filemame){}
+void CreateFile(char* filepath){}
 void ReadFile(char* filepath){}
 void UpdateFile(char* filepath){}
 void DeleteFile(char* filepath){}
 enum types FileInputHandler(){}
-void ReadUserInput(){}
 
 enum types {
     CREATE,

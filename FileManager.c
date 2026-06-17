@@ -9,21 +9,51 @@ CommandTypes cmdType[] = {
     {'d', DELETE},
 };
 
-void CreateFile(char* filemame){
-    FILE *file = fopen(filemame, "w");
+void CreateFile(char* filepath){
+  
+    FILE *file = fopen(filepath, "w");
 
     if(file != NULL){
         fclose(file);
     }
 }
 
-void ReadFile(char* filepath){}
+void ReadFile(char* filepath){
+  char FileContent[100];
+  FILE *file = fopen(filepath, "r");
 
-void UpdateFile(char* filepath){}
+  if (file == NULL){
+    printf("\nFile not found!\n");
+    fclose(file);
+  } else {
+    while(fgets(FileContent, 100, file)){}
+      printf("%s", FileContent);
+    fclose(file);
+  }
 
-void DeleteFile(char* filepath){}
+}
 
-void FileHandler(CommandTypes cmdType){}
+void UpdateFile(char* filepath){
+  FILE *file = fopen(filepath, "w");
+  char UserInput[500] = {0};
+  
+  if (file != NULL){
+    file = fopen(filepath, "a");
+    scanf("%499s", UserInput);
+    fprint(file, filepath);
+    fclose(file);
+ } else {
+   printf("\nFile not found\n");
+  }
+}
+
+void DeleteFile(char* filepath){
+  if (remove(filepath) == 0){
+    printf("File '%s' deleted sucessfully.\n");
+  } else {
+    printf("\nFile not found\n");
+  }
+}
 
 const int COMMANDSIZE = (sizeof(cmdType)/sizeof(cmdType[0]));
 
@@ -40,4 +70,34 @@ enum types FileInputHandler(){
     }
 
     return -1;
+}
+
+void FileHandler(){
+  
+  char filepath[1000] = {0};
+
+  switch(FileInputHandler()){
+    case CREATE:
+      scanf("%999s", filepath);
+      CreateFile(filepath);
+      break;
+
+    case READ:
+      scanf("%999s", filepath);
+      ReadFile(filepath);
+      break;
+
+    case UPDATE:
+      scanf("%999s", filepath);
+      UpdateFile(filepath);
+      break;
+
+    case DELETE:
+      scanf("%999s", filepath);
+      DeleteFile(filepath);
+      break;
+
+    default:
+      break;
+    }
 }
