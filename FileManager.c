@@ -40,7 +40,7 @@ void UpdateFile(char* filepath){
   if (file != NULL){
     file = fopen(filepath, "a");
     scanf("%499s", UserInput);
-    fprint(file, filepath);
+    fprintf(file, filepath);
     fclose(file);
  } else {
    printf("\nFile not found\n");
@@ -49,7 +49,7 @@ void UpdateFile(char* filepath){
 
 void DeleteFile(char* filepath){
   if (remove(filepath) == 0){
-    printf("File '%s' deleted sucessfully.\n");
+    printf("File '%s' deleted sucessfully.\n", filepath);
   } else {
     printf("\nFile not found\n");
   }
@@ -64,7 +64,7 @@ enum types FileInputHandler(){
     while((ch = getchar()) != '\n' && ch != EOF);
 
     for (int i = 0; i < COMMANDSIZE; i++){
-        if(strcmp(UserInput, cmdType[i].CommandName) == 0){
+        if(UserInput == cmdType[i].CommandName){
             return cmdType[i].type;
         }
     }
