@@ -1,4 +1,4 @@
-void FileHandler(){}
+void FileHandler();
 
 enum types {
     CREATE,
