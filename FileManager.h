@@ -1,11 +1,5 @@
 void FileHandler(){}
 
-void CreateFile(char* filepath){}
-void ReadFile(char* filepath){}
-void UpdateFile(char* filepath){}
-void DeleteFile(char* filepath){}
-enum types FileInputHandler(){}
-
 enum types {
     CREATE,
     READ,
@@ -17,6 +11,12 @@ typedef struct {
     char CommandName;
     enum types type;
 } CommandTypes;
+
+void CreateFile(char* filepath);
+void ReadFile(char* filepath);
+void UpdateFile(char* filepath);
+void DeleteFile(char* filepath);
+enum types FileInputHandler();
 
 extern CommandTypes cmdType[];
 extern const int COMMANDSIZE;
