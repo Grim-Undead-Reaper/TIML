@@ -12,11 +12,11 @@ CommandTypes cmdType[] = {
 const int COMMANDTYPESIZE = (sizeof(cmdType) / sizeof(cmdType[0]));
 
 void CreateFile(char* filepath){
-    FILE *file = fopen(filepath, "w");
+  FILE *file = fopen(filepath, "w");
 
-    if(file != NULL){
-        fclose(file);
-    }
+  if(file != NULL){
+      fclose(file);
+  }
 }
 
 void ReadFile(char* filepath){
@@ -57,46 +57,54 @@ void DeleteFile(char* filepath){
 }
 
 enum Types FileInputHandler(){
-    char UserInput;
-    scanf("%c", &UserInput);
-    int ch;
-    while((ch = getchar()) != '\n' && ch != EOF);
+  char UserInput;
+  scanf("%c", &UserInput);
 
-    for (int i = 0; i < COMMANDTYPESIZE; i++){
-        if(UserInput == cmdType[i].CommandName){
-            return cmdType[i].type;
-        }
+  int ch;
+  while((ch = getchar()) != '\n' && ch != EOF);
+
+  for (int i = 0; i < COMMANDTYPESIZE; i++){
+    if((UserInput == cmdType[i].CommandName) == 0){
+      return cmdType[i].type;
     }
+  }
 
-    return -1;
+  return -1;
 }
 
 void FileHandler(){
   
   char filepath[1000] = {0};
 
+  printf("\nCommands\n'c': Create a new file\n'r': Read a file\n'u': Update a file\n'd': Delete a file\n\n");
+
   switch(FileInputHandler()){
     case CREATE:
+      printf("Filepath or Filename: ");
       scanf("%999s", filepath);
       CreateFile(filepath);
       break;
 
     case READ:
+      printf("Filepath or Filename: ");
       scanf("%999s", filepath);
       ReadFile(filepath);
       break;
 
     case UPDATE:
+      printf("Filepath or Filename: ");
       scanf("%999s", filepath);
       UpdateFile(filepath);
       break;
 
     case DELETE:
+      printf("Filepath or Filename: ");
       scanf("%999s", filepath);
       DeleteFile(filepath);
       break;
 
     default:
+      printf("Nenhum arquivo escolhido/encontrado!");
       break;
     }
 }
