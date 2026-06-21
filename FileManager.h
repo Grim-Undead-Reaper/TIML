@@ -1,6 +1,7 @@
-void FileHandler();
+#ifndef FILEMANAGER_H
+#define FILEMANAGER_H
 
-enum types {
+enum Types {
     CREATE,
     READ,
     UPDATE,
@@ -9,14 +10,17 @@ enum types {
 
 typedef struct {
     char CommandName;
-    enum types type;
+    enum Types type;
 } CommandTypes;
 
+extern CommandTypes cmdType[];
+extern const int COMMANDTYPESIZE;
+
+void FileHandler();
 void CreateFile(char* filepath);
 void ReadFile(char* filepath);
 void UpdateFile(char* filepath);
 void DeleteFile(char* filepath);
-enum types FileInputHandler();
+enum Types FileInputHandler();
 
-extern CommandTypes cmdType[];
-extern const int COMMANDSIZE;
+#endif

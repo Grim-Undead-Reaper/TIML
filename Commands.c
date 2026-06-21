@@ -15,7 +15,7 @@ Command commands[] = {
     {"cmdh", "Get all commands used.", GETHISTORY},
     {"fmanager", "File the files", FILEMANAGER},
     {"--version", "Get current terminal version", VERSION},
-    {"exit", "Close the terminal.", EXIT},
+    {"exit", "Close the terminal.", EXIT}
 };
 
 const int COMMANDSIZE = (sizeof(commands) / sizeof(commands[0]));

@@ -3,14 +3,15 @@
 #include "FileManager.h"
 
 CommandTypes cmdType[] = {
-    {'c', CREATE},
-    {'r', READ},
-    {'u', UPDATE},
-    {'d', DELETE},
+  {'c', CREATE},
+  {'r', READ},
+  {'u', UPDATE},
+  {'d', DELETE}
 };
 
+const int COMMANDTYPESIZE = (sizeof(cmdType) / sizeof(cmdType[0]));
+
 void CreateFile(char* filepath){
-  
     FILE *file = fopen(filepath, "w");
 
     if(file != NULL){
@@ -55,15 +56,13 @@ void DeleteFile(char* filepath){
   }
 }
 
-const int COMMANDSIZE = (sizeof(cmdType)/sizeof(cmdType[0]));
-
-enum types FileInputHandler(){
+enum Types FileInputHandler(){
     char UserInput;
     scanf("%c", &UserInput);
     int ch;
     while((ch = getchar()) != '\n' && ch != EOF);
 
-    for (int i = 0; i < COMMANDSIZE; i++){
+    for (int i = 0; i < COMMANDTYPESIZE; i++){
         if(UserInput == cmdType[i].CommandName){
             return cmdType[i].type;
         }

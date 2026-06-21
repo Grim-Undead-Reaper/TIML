@@ -22,7 +22,6 @@ extern Command commands[];
 extern const int COMMANDSIZE;
 
 enum Functions InputHandler(char* InputArray, int* count, char commandList[100][255]);
-
 int help();
 void ClearConsole();
 void CurrentVersion();
