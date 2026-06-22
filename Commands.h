@@ -9,7 +9,8 @@ enum Functions {
   GETHISTORY,
   VERSION,
   FILEMANAGER,
-  EXIT
+  EXIT,
+  COMMANDNOTFOUND
 };
 
 typedef struct {

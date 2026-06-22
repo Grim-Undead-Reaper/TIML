@@ -30,7 +30,7 @@ enum Functions InputHandler(char* InputArray, int* count, char commandList[100][
         }
     }
 
-    return -1;
+    return COMMANDNOTFOUND;
 }
 
 int help(){
