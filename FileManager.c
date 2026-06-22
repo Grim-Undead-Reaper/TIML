@@ -73,7 +73,9 @@ void DeleteFile(){
 
 enum Types FileInputHandler(void){
   char UserInput;
+  printf("Command type: ");
   scanf(" %c", &UserInput);
+  printf("\n");
 
   int ch;
   while((ch = getchar()) != '\n' && ch != EOF);
@@ -84,7 +86,7 @@ enum Types FileInputHandler(void){
     }
   }
 
-  return -1;
+  return NOTFOUND;
 }
 
 void FileHandler(){
@@ -112,8 +114,8 @@ void FileHandler(){
       DeleteFile();
       break;
 
-    default:
-      printf("Nenhum arquivo escolhido/encontrado!");
+    case NOTFOUND:
+      printf("Command not found!\n\n");
       break;
     }
 }

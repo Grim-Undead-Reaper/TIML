@@ -5,7 +5,8 @@ enum Types {
     CREATE,
     READ,
     UPDATE,
-    DELETE
+    DELETE,
+    NOTFOUND
 };
 
 typedef struct {
