@@ -1,6 +1,6 @@
 #include "App.h"
 
-int main(){
+int main(void){
   CreateTerminal();
   return 0;
 }

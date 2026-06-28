@@ -11,7 +11,7 @@ CommandTypes cmdType[] = {
 
 const int COMMANDTYPESIZE = (sizeof(cmdType) / sizeof(cmdType[0]));
 
-void CreateFile(){
+void CreateFile(void){
   char filepath[1000] = {0};
   FILE* file;
 
@@ -23,7 +23,7 @@ void CreateFile(){
   }
 }
 
-void ReadFile(){
+void ReadFile(void){
 
   char FileContent[100];
   char filepath[1000] = {0};
@@ -43,7 +43,7 @@ void ReadFile(){
   }
 }
 
-void UpdateFile(){
+void UpdateFile(void){
   char filepath[1000] = {0};
   char UserInput[500] = {0};
   FILE *file;
@@ -60,7 +60,7 @@ void UpdateFile(){
   }
 }
 
-void DeleteFile(){
+void DeleteFile(void){
   char filepath[1000] = {0};
   scanf("%999s", filepath);
 
@@ -89,7 +89,7 @@ enum Types FileInputHandler(void){
   return NOTFOUND;
 }
 
-void FileHandler(){
+void FileHandler(void){
 
   printf("\nCommands\n'c': Create a new file\n'r': Read a file\n'u': Update a file\n'd': Delete a file\n\n");
 

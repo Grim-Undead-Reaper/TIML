@@ -40,10 +40,10 @@ int help(){
     return 0;
 }
 
-void ClearConsole(){
+void ClearConsole(void){
     system("cls");
 }
 
-void CurrentVersion(){
+void CurrentVersion(void){
     printf("\n[Author]: {Grim-Undead-Reaper}\n[Software]: {First_C_UI}\n[Version]: {%s}\n", version);
 }

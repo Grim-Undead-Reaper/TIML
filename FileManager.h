@@ -17,11 +17,11 @@ typedef struct {
 extern CommandTypes cmdType[];
 extern const int COMMANDTYPESIZE;
 
-void FileHandler();
-void CreateFile();
-void ReadFile();
-void UpdateFile();
-void DeleteFile();
+void FileHandler(void);
+void CreateFile(void);
+void ReadFile(void);
+void UpdateFile(void);
+void DeleteFile(void);
 enum Types FileInputHandler(void);
 
 #endif
