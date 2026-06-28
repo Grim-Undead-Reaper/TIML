@@ -11,7 +11,7 @@ CommandTypes cmdType[] = {
 
 const int COMMANDTYPESIZE = (sizeof(cmdType) / sizeof(cmdType[0]));
 
-void CreateFile(void){
+int CreateFile(void){
   char filepath[1000] = {0};
   FILE* file;
 
@@ -19,11 +19,14 @@ void CreateFile(void){
   file = fopen(filepath, "w");
 
   if(file != NULL){
-      fclose(file);
+    fclose(file);
+    return 0;
+  } else {
+    return -1;
   }
 }
 
-void ReadFile(void){
+int ReadFile(void){
 
   char FileContent[100];
   char filepath[1000] = {0};
@@ -34,16 +37,18 @@ void ReadFile(void){
 
   if (file == NULL){
     printf("\nFile not found!\n");
+    return 1;
   } else {
     printf("\nFilePath: %s\n", filepath);
     while(fgets(FileContent, 100, file)){
       printf("%s", FileContent);
     }
     fclose(file);
+    return 0;
   }
 }
 
-void UpdateFile(void){
+int UpdateFile(void){
   char filepath[1000] = {0};
   char UserInput[500] = {0};
   FILE *file;
@@ -55,8 +60,10 @@ void UpdateFile(void){
     scanf("%499s", UserInput);
     fprintf(file, UserInput);
     fclose(file);
+    return 0;
  } else {
    printf("\nFile not found\n");
+   return -1;
   }
 }
 
@@ -66,8 +73,10 @@ void DeleteFile(void){
 
   if (remove(filepath) == 0){
     printf("File '%s' deleted sucessfully.\n", filepath);
+    return 0;
   } else {
     printf("\nFile not found\n");
+    return -1;
   }
 }
 

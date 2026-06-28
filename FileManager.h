@@ -18,10 +18,10 @@ extern CommandTypes cmdType[];
 extern const int COMMANDTYPESIZE;
 
 void FileHandler(void);
-void CreateFile(void);
-void ReadFile(void);
-void UpdateFile(void);
-void DeleteFile(void);
+int CreateFile(void);
+int ReadFile(void);
+int UpdateFile(void);
+int DeleteFile(void);
 enum Types FileInputHandler(void);
 
 #endif
