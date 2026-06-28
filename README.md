@@ -41,7 +41,7 @@
 ##### Parâmetros:
 **int size:** Tamanho atual da [commandList](## "É a array onde será amarzenada os comandos usados."), usado num loop *for* para exibir cada item da array.
 
-**char commandList:** É a array onde será amarzenada os comandos usados.
+**char commandList:** É a array onde está amarzenado os comandos usados.
 
 ***
 #### Adiciona um novo comando ao histórico de comandos
@@ -59,7 +59,8 @@
 ### Exemplo de código
 
 ``` c 
-commandList[count] = currentCommand;
+strcpy(commandList[*count], currentCommand);
+  *count = *count + 1;
 ```
 
 ***
