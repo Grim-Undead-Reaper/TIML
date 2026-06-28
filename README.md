@@ -1,3 +1,8 @@
+
+# Project Title
+
+A brief description of what this project does and who it's for
+
 ## Comandos de usuário
 
 #### Pega o ultimo nome de usuário salvo.
@@ -14,23 +19,27 @@
 
 #### Criar um novo arquivo
 ``` c
-  void CreateFile(void);
+  int CreateFile(void);
 ```
+**Obs:** Retorna 0 em caso de sucesso ou retorna -1 em caso de erro.
 ***
 #### Lê um arquivo no terminal.
 ``` c
-  void ReadFile(void);
+  int ReadFile(void);
 ```
+**Obs:** Retorna 0 em caso de sucesso ou retorna -1 em caso de erro.
 ***
 #### Sobrescrever o conteudo de um arquivo.
 ``` c
-  void UpdateFile(void);
+  int UpdateFile(void);
 ```
+**Obs:** Retorna 0 em caso de sucesso ou retorna -1 em caso de erro.
 ***
 #### Deleta um arquivo
 ``` c
-  void DeleteFile(void);
+  int DeleteFile(void);
 ```
+**Obs:** Retorna 0 em caso de sucesso ou retorna -1 em caso de erro.
 
 ## Comandos de histórico
 
