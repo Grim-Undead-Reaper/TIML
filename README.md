@@ -59,8 +59,10 @@
 ### Exemplo de código
 
 ``` c 
-strcpy(commandList[*count], currentCommand);
+void AddNewCommandToHistory(int* count, char commandList[100][255], char* currentCommand){
+  strcpy(commandList[*count], currentCommand);
   *count = *count + 1;
+}
 ```
 
 ***
