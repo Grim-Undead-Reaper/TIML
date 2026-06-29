@@ -19,7 +19,7 @@
 ``` c
   int CreateFile(void);
 ```
-**Obs:** Retorna 0 em caso de sucesso ou retorna -1 em caso de erro.
+
 | Retorno | Significado |
 | :------ | :---------- |
 | `0`     | `Sucesso`   |
