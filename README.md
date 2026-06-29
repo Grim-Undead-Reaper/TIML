@@ -8,11 +8,18 @@
 ``` c
   void Getuser(void);
 ```
+
+| Retorno |
+| :------ |
+| `void`  |
 #### Salva um novo nome de usuário.
 ``` c
   void Setuser(void);
 ```
 
+| Retorno |
+| :------ |
+| `void`  |
 ## Comandos de gerenciamento de arquivos.
 
 #### Criar um novo arquivo
@@ -55,15 +62,33 @@
 ``` c
   void GetHistory(int size, char commandList[100][255]);
 ```
+
+| Retorno |
+| :------ |
+| `void`  |
 #### **Parâmetros**:
 **`int size`:** Tamanho atual da [commandList](## "É a array onde será armazenada os comandos usados."), usado num loop *for* para exibir cada item da array.
 
 **`char commandList`:** É a array onde está armazenado os comandos usados.
 
+### Exemplo de código
+``` c 
+void GetHistory(int size, char commandList[100][255]){
+printf("ID | Command name\n");
+for (int i = 0; i < size; i++){
+    printf("%d | %s\n", i, commandList[i]);
+    }
+}
+```
+
 #### Adiciona um novo comando ao histórico de comandos
 ``` c
   void AddNewCommandToHistory(int* count, char commandList[100][255], char* currentCommand); 
 ```
+
+| Retorno |
+| :------ |
+| `void`  |
 #### **Parâmetros**:
 
 **`int count`:** é o valor para representar o index atual da lista de comandos, a função adiciona o novo valor (*currentCommand*) e incrementa o count.
