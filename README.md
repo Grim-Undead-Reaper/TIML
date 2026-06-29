@@ -19,7 +19,7 @@
 ``` c
   int CreateFile(void);
 ```
-**Obs:** Retorna 0 em caso de sucesso ou retorna -1 em caso de erro.
+
 | Retorno | Significado |
 | :------ | :---------- |
 | `0`     | `Sucesso`   |
@@ -56,9 +56,9 @@
   void GetHistory(int size, char commandList[100][255]);
 ```
 #### **Parâmetros**:
-**`int size`:** Tamanho atual da [commandList](## "É a array onde será amarzenada os comandos usados."), usado num loop *for* para exibir cada item da array.
+**`int size`:** Tamanho atual da [commandList](## "É a array onde será armazenada os comandos usados."), usado num loop *for* para exibir cada item da array.
 
-**`char commandList`:** É a array onde está amarzenado os comandos usados.
+**`char commandList`:** É a array onde está armazenado os comandos usados.
 
 #### Adiciona um novo comando ao histórico de comandos
 ``` c
@@ -68,9 +68,9 @@
 
 **`int count`:** é o valor para representar o index atual da lista de comandos, a função adiciona o novo valor (*currentCommand*) e incrementa o count.
 
-**`char commandList`:** É a array onde será amarzenada os comandos usados.
+**`char commandList`:** É a array onde será armazenada os comandos usados.
 
-**`char currentCommand`:** É a array que representa o comando inserido pelo usuário, essa *string* é amarzenada dentro de [commandList](## "É a array onde será amarzenada os comandos usados."), tendo o valor [count](## "é o valor para representar o index atual da lista de comandos, a função adiciona o novo valor (*currentCommand*) e incrementa o count.") como index.
+**`char currentCommand`:** É a array que representa o comando inserido pelo usuário, essa *string* é armazenada dentro de [commandList](## "É a array onde será armazenada os comandos usados."), tendo o valor [count](## "é o valor para representar o index atual da lista de comandos, a função adiciona o novo valor (*currentCommand*) e incrementa o count.") como index.
 
 ### Exemplo de código
 
@@ -81,14 +81,11 @@ void AddNewCommandToHistory(int* count, char commandList[100][255], char* curren
 }
 ```
 
-
 ## Features
 
 - Adição de banco de dados para ter dados permanentes.
 - Criar um simples sistema para calculos matemático básicos.
 - Melhorar o gerenciamento de arquivos.
-
-
 
 ## References
 
