@@ -85,9 +85,6 @@ for (int i = 0; i < size; i++){
   void AddNewCommandToHistory(int* count, char commandList[100][255], char* currentCommand); 
 ```
 
-| Retorno |
-| :------ |
-| `void`  |
 #### **Parâmetros**:
 
 **`int count`:** é o valor para representar o index atual da lista de comandos, a função adiciona o novo valor (*currentCommand*) e incrementa o count.
@@ -104,6 +101,10 @@ void AddNewCommandToHistory(int* count, char commandList[100][255], char* curren
   *count = *count + 1;
 }
 ```
+
+| Retorno |
+| :------ |
+| `void`  |
 
 ## Features
 
