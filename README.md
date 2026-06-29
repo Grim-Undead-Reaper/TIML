@@ -62,10 +62,6 @@
 ``` c
   void GetHistory(int size, char commandList[100][255]);
 ```
-
-| Retorno |
-| :------ |
-| `void`  |
 #### **Parâmetros**:
 **`int size`:** Tamanho atual da [commandList](## "É a array onde será armazenada os comandos usados."), usado num loop *for* para exibir cada item da array.
 
@@ -80,6 +76,9 @@ for (int i = 0; i < size; i++){
     }
 }
 ```
+| Retorno |
+| :------ |
+| `void`  |
 
 #### Adiciona um novo comando ao histórico de comandos
 ``` c
