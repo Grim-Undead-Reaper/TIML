@@ -114,6 +114,6 @@ void AddNewCommandToHistory(int* count, char commandList[100][255], char* curren
 
 ## References
 
-- [<stdio.h>](https://pubs.opengroup.org/onlinepubs/7908799/xsh/stdio.h.html) - O arquivo include <stdio.h> define constantes, macros e tipos e declara funções de entrada e de saída de fluxo
+- [<stdio.h>](https://pubs.opengroup.org/onlinepubs/7908799/xsh/stdio.h.html) - O arquivo include <stdio.h> define constantes, macros e tipos e declara funções de entrada e de saída de fluxo.
 - [<stdlib.h>](https://pubs.opengroup.org/onlinepubs/009604599/basedefs/stdlib.h.html) - O arquivo include <stdlib.h> Fornece funções para alocação de memória, conversão de tipos, geração de números aleatórios e outras funções utilitárias.
 - [<string.h>](https://pubs.opengroup.org/onlinepubs/7908799/xsh/string.h.html) - O arquivo include <string.h> fornece funções, macros e manipulação de cadeias de caracteres e regiões de memória.
